@@ -24,13 +24,13 @@ class ContactsController extends Controller
         ]);
     }
 
-    public function process()
+    public function send()
     {
-        
+        return view('contacts.thanks');
     }
 
-    public function complete()
+    public function admin()
     {
-        return view('contacts.complete');
+        return view('contacts.admin');
     }
 }

@@ -19,11 +19,14 @@ Route::get('/', function () {
 });
 
 // お問い合わせ入力ページ
-Route::get('/contacts',[ContactsController::class,'index']);
+Route::get('/contacts',[ContactsController::class,'index'])->name('contacts');
 
 // 確認ページ
-Route::get('/contacts/confirm', [ContactsController::class,'confirm'])->name('contact.confirm');
-Route::post('/contacts/confirm', [ContactsController::class,'confirm'])->name('contact.confirm');
+Route::get('/contacts/confirm', [ContactsController::class,'confirm'])->name('contacts.confirm');
+Route::post('/contacts/confirm', [ContactsController::class,'confirm'])->name('contacts.confirm');
 
 // 完了ページ
-Route::get('/contacts/complete',[ContactsController::class,'complete'])->name('complete');
+Route::get('/contacts/thanks',[ContactsController::class,'send'])->name('send');
+
+// 管理システム
+Route::get('/contacts/admin',[ContactsController::class,'admin'])->name('admin');
