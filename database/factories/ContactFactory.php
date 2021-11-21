@@ -23,7 +23,7 @@ class ContactFactory extends Factory
         'postcode' => $this->faker->randomNumber(7),
         'address' => $this->faker->address(),
         'building_name'=>$this->faker->word(),
-        'opinion'=>$this->faker->realText(20)
+        'opinion'=>$this->faker->realText(100)
 
         ];
     }

@@ -27,6 +27,12 @@ Route::post('/contacts/confirm', [ContactsController::class,'confirm'])->name('c
 
 // 完了ページ
 Route::get('/contacts/thanks',[ContactsController::class,'send'])->name('send');
+Route::post('/contacts/thanks',[ContactsController::class,'send'])->name('send');
 
 // 管理システム
 Route::get('/contacts/admin',[ContactsController::class,'admin'])->name('admin');
+//検索システム
+Route::get('/contacts/admin',[ContactsController::class,'search']);
+//削除
+Route::get('/contacts/delete',[ContactsController::class,'delete']);
+Route::post('/contacts/delete',[ContactsController::class,'delete']);

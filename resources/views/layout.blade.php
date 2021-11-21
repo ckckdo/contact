@@ -6,25 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>contact</title>
     <style>
+      /* ----------全体---------- */
       h1{
         font-size:20px;
         text-align:center;
       }
       .container{
         margin:100px,30px;
-        font-size:14px;
+        font-size:12px;
       }
-      .form-group{
-        display:flex;
-        justify-content:space-between;
-        margin:10px;
+
+      /* ----------テーブル---------- */
+      table{
+        margin:0 auto;
       }
-      .label{
-        width: 30%;
+      th{
+        width: 140px;
+        vertical-align:baseline;
+      }
+      td{
+        width: 520px;
+        height:30px;
+        vertical-align:baseline;
+        text-align:left;
       }
       .require{
         color:red;
       }
+      /* ----------入力例---------- */
       .exsample{
         display:flex;
         margin-left:20px;
@@ -36,18 +45,12 @@
       .firstname{
         margin-left:50%;
       }
-      .input-form{
-        width: 100%;
-        align-items:center;
-        flex-flow:row,wrap;
-      }
+
+      /* ----------お名前フォーム---------- */
       .input-form-name{
         display:flex;
         width: 100%;
         align-items:center;
-      }
-      .input-radio{
-        width: 80%;
       }
       .name-form1{
         border:1px,#888,solid;
@@ -60,78 +63,93 @@
         height:28px;
         margin-left:4%;
       }
+
+      /* ----------郵便番号フォーム---------- */
+      .post{
+        font-size:12px;
+      }
       .post-form{
         width: 95%;
         height:28px;
       }
+
+      /* ----------メールアドレス・住所・建物名のフォーム---------- */
       .form{
         width: 98%;
         height:28px;
       }
-      label {
-        position: relative;
-        cursor: pointer;
-        padding-left: 30px;
+      .error{
+        border:none;
+        width: auto;
+        font-size:12px;
+      }
+      ul{
+        padding:0;
       }
 
-      label::before,
-      label::after {
-        content: "";
-        display: block;
-        border-radius: 50%;
-        position: absolute;
-        transform: translateY(-50%);
-        top: 50%;
-      }
-
-      label::before {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        left: 5px;
-      }
-
-      label::after {
-        background-color: #000;
-        border-radius: 50%;
-        opacity: 0;
-        width: 8px;
-        height: 8px;
-        left: 12px
-      }
-
-      input:checked + label::after {
-        opacity: 1;
-      }
-
+      /* ----------性別　ラジオボタン ----------*/
       .radio {
-        position: absolute;
-        white-space: nowrap;
-        border: 0;
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        overflow: hidden;
-        height: 1px;
-        width: 1px;
-        margin: -1px;
-        padding: 0;
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .radio input {
+          display: none;
         }
+
+      /* 常に表示する円 */
+      .radio-mark {
+        position: absolute;
+        top: -3; /* 上からの位置 */
+        left: 0;
+        height: 20px; /* 幅 */
+        width: 20px; /* 幅 */
+        border: solid 1px #d4dae2; /* 線 */
+        border-radius: 50%;
+        box-sizing: border-box;
+        }
+        /* 選択時に重ねる円 */
+        .radio-mark:after {
+          content: "";
+          position: absolute;
+          background: #000; /* 色 */
+          height: 10px; /* 幅 */
+          width: 10px; /* 幅 */
+          border-radius: 50%;
+          top: 4px;
+          bottom: 4px;
+          left: 4px;
+          right: 4px;
+          opacity: 0; /* 透明にしておく */
+        }
+      /* 選択されたとき */
+        /* 上の円 */
+        .radio input:checked + .radio-mark:after {
+          opacity: 1; /* 透明を解除 */
+        }
+
+        /* ----------ご意見フォーム---------- */
         .textform{
           width: 98%;
           height:120px;
         }
+
+        /* ----------ボタン---------- */
         .submit{
           text-align:center;
         }
         .btn{
+          margin-top:30px;
+          margin-bottom:10px;
           width: 120px;
           height:40px;
           color:#fff;
           background-color:#000;
           text-align:center;
-          border:solid,1px,#000;
+          border:solid 1px #000;
+          border-radius:3px;
+
         }
         .btn-top{
           text-decoration:none;
@@ -143,15 +161,25 @@
           font-size:15px;
           padding-top:8px;
           text-align:center;
-          border:solid,1px,#000;
+          border:solid 1px #000;
           border-radius:3px;
         }
-        .text-center{
-          height:100vh;
-          display:flex;
-          flex-direction:column;
-          justify-content:center;
-          align-items:center;
+        li{
+          text-align:center;
+          font-size:10px;
+          display:inline-block;
+          list-style:none;
+          width:12px;
+          border:1px solid #d4dae2;
+          padding:3px;
+          margin:0;
+        }
+        li a{
+          text-decoration:none;
+        }
+        li a:focus{
+          background-color:#000;
+          color:#fff;
         }
     </style>
 </head>

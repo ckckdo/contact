@@ -1,51 +1,94 @@
 @extends('layout')
 @section('content')
+<style>
+  th,td{
+    font-size:12px;
+    height:50px;
+    text-align:left;
+  }
+  /* -----------ボタン---------- */
+  .text-center{
+    text-align:center;
+  }
+  a{
+    display:block;
+    color:#000;
+  }
+</style>
     <div class="container">
         <h1 class="ttl">お問い合わせ確認</h1>
         <div class="container">
-            <form action="/contacts/send" method="post">
+            <form action="{{ route('send') }}" method="post">
             @csrf
-                <div class="form-group">
-                    <p class="label">お名前</p>
-                    <p>{{$inputs->lastname.$inputs->firstname}}</p>
-                    <input type="hidden" name="lastname" value="{{$input->lastname}}">
-                    <input type="hidden" name="firstname" value="{{$input->firstname}}">
-                </div>
-                <div class="form-group">
-                    <p class="label">メールアドレス</p>
-                    <p>{{$inputs->email}}</p>
-                    <input type="hidden" name="email" value="{{$input->email}}">
-                </div>
-                <div class="form-group">
-                    <p class="label">性別</p>
-                    <p>{{$inputs->gender}}</p>
-                    <input type="hidden" name="gender" value="{{$input->gender}}">
-                </div>
-
-                <div class="form-group">
-                    <p class="label">郵便番号</p>
-                    <p>{{$inputs->postcode}}</p>
-                    <input type="hidden" name="postcode" value="{{$input->postcode}}">
-                </div>
-                <div class="form-group">
-                    <p class="abel">住所</p>
-                    <p>{{$inputs->address}}</p>
-                    <input type="hidden" name="address" value="{{$input->address}}">
-                </div>
-                <div class="form-group">
-                    <p class="label">建物名</p>
-                    <p>{{$inputs->building_name}}</p>
-                    <input type="hidden" name="building_name" value="{{$input->building-name}}">
-                </div>
-                <div class="form-group">
-                    <p class="label">ご意見</p>
-                    <p>{{$inputs->opinion}}</p>
-                    <input type="hidden" name="opinion" value="{{$input->opinion}}">
-                </div>
+            {{method_field('get')}}
+                <table>
+                  <tr>
+                    <th>お名前</th>
+                    <td>
+                      {{$inputs['lastname'].$inputs['firstname']}}
+                    <input type="hidden" name="lastname" value="{{$inputs['lastname']}}">
+                    <input type="hidden" name="firstname" value="{{$inputs['firstname']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>性別</th>
+                    <td>
+                      {{$inputs['gender']}}
+                    <input type="hidden" name="gender" value="{{$inputs['gender']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>メールアドレス</th>
+                    <td>
+                      {{$inputs['email']}}
+                    <input type="hidden" name="email" value="{{$inputs['email']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>郵便番号</th>
+                    <td>
+                      {{$inputs['postcode']}}
+                    <input type="hidden" name="postcode" value="{{$inputs['postcode']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>住所</th>
+                    <td>
+                      {{$inputs['address']}}
+                    <input type="hidden" name="address" value="{{$inputs['address']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>建物名</th>
+                    <td>
+                      {{$inputs['building_name']}}
+                    <input type="hidden" name="building_name" value="{{$inputs['building_name']}}">
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>ご意見</th>
+                    <td>
+                      {{$inputs['opinion']}}
+                    <input type="hidden" name="opinion" value="{{$inputs['opinion']}}">
+                    </td>
+                  </tr>
+                </table>
 
                 <div class="text-center">
-                   <button name="action" type="submit" value="submit" class="btn">送信</button>
-                    <a href="/contacs">修正する</a>
+                  <button name="action" type="submit" value="submit" class="btn">送信</button>
+                    <a href="/contacts">修正する</a>
                 </div>
             </form>
         </div>
