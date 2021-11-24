@@ -28,14 +28,6 @@ class Contact extends Model
      * @return \Illuminate\Database\Eloquent\Builder
      */
 
-     //ハッシュタグレポートを取得
-    public static function getDate($from, $until)
-    {
-        //created_atが20xx/xx/xx ~ 20xx/xx/xxのデータを取得
-        $date = Contact::whereBetween("created_at", [$from, $until])->get();
-
-        return $date;
-    }
     public function scopeSerach(Builder $query, array $params): Builder
     {
         // 性別絞り込み
@@ -48,13 +40,13 @@ class Contact extends Model
                     ->orWhere('firstname', 'like', '%' . $params['keyword'] . '%');
             });
         }
+
         //登録日検索
-        // if (!empty($params['from']) && !empty($params['until'])) {
-        //     $query->where(function ($query) use ($params) {
-        //         $query->where('created_at', 'like', '%' . $params['from'] . '%')
-        //             ->orWhere('created_at', 'like', '%' . $params['until'] . '%');
-        //     });
-        // }
+        if (!empty($params['from']&&!empty($param['until']))) {
+            $query->where(function ($query) use ($params) {
+                $query->whereBetween('created_at', [$params['from'], $params['until']]);
+            });
+        }
         //メールアドレス検索
         if (!empty($params['keyword-email'])) {
             $query->where(function ($query) use ($params) {

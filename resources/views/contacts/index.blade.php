@@ -64,13 +64,13 @@
                   <tr>
                     <th>郵便番号<span class="require">※</span></th>
                     <td>
-                      <span class="post">〒</span><input type="text" name="postcode" class="post-form" value="{{old('postcode')}}">
+                      <span class="post">〒</span><input type="text" name="zip" id="postcode" class="post-form" value="{{old('zip')}}" onKeyUp="AjaxZip3.zip2addr('zip', '', 'address', 'address');" onKeyUP="toHalfWidth(this);">
                       <div class="exsample">
                           <p>例)123-4567</p>
                       </div>
-                        @if ($errors->has('postcode'))
+                        @if ($errors->has('zip'))
                           <ul>
-                              @foreach ($errors->get('postcode') as $message)
+                              @foreach ($errors->get('zip') as $message)
                                   <li class="error">{{ $message }}</li>
                               @endforeach
                           </ul>
@@ -124,4 +124,5 @@
                 </div>
             </form>
         </div>
+<script src="{{ asset('js/rtv.js') }}"></script>
 @endsection

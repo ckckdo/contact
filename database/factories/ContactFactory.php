@@ -20,7 +20,7 @@ class ContactFactory extends Factory
         'firstname'=>$this->faker->name(),
         'email'=>$this->faker->email(),
         'gender'=>$this->faker->randomElement($array=[1,2]),
-        'postcode' => $this->faker->randomNumber(7),
+        'zip' => $this->faker->randomNumber(7),
         'address' => $this->faker->address(),
         'building_name'=>$this->faker->word(),
         'opinion'=>$this->faker->realText(100)

@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
         'firstname'=>'required',
         'gender'=>'required',
         'email'=>['required','email'],
-        'postcode'=>['required','regex:/^[0-9]{3}-[0-9]{4}$/'],
+        'zip'=>['required','regex:/^[0-9]{3}-[0-9]{4}$/'],
         'address'=>'required',
         'opinion'=>['required','max:120'],
         ];
@@ -41,7 +41,7 @@ class PostRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'postcode' => mb_convert_kana($this->postcode, 'n'),
+            'zip' => mb_convert_kana($this->zip, 'n'),
         ]);
     }
 
@@ -52,8 +52,8 @@ class PostRequest extends FormRequest
         'firstname.required' => '名を入力してください',
         'email.required' => 'メールアドレスを入力してください',
         'email.email' => 'メールアドレスの形式で入力してください',
-        'postcode.required' => '郵便番号を入力してください',
-        'postcode.regex' => '半角ハイフンを入れて入力してください',
+        'zip.required' => '郵便番号を入力してください',
+        'zip.regex' => '半角ハイフンを入れて入力してください',
         'address.required' => '住所を入力してください',
         'opinion.required' => 'ご意見を入力してください',
         'opinion.max' => '120文字以内で入力してください',

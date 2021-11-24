@@ -1,11 +1,18 @@
 @extends('layout')
 <style>
   .container{
-    margin:10px 30px;
+    width:100%;
+    margin:30px;
   }
   .search{
+    margin:0 auto;
+    width: 80%;
     border:1px #000 solid;
     padding:30px;
+  }
+  .search-index{
+    width: 80%;
+    margin:0 auto;
   }
   /* ----------各フォーム---------- */
   .keyword-form{
@@ -18,15 +25,20 @@
   }
   /* ----------テーブル---------- */
   .admin-table{
-    margin:0 auto 0 0;
+    width: 100%;
+    margin:0 auto;
   }
   th,td{
     font-size:12px;
     height:50px;
     text-align:left;
   }
-  .search-th{
-    width:100px
+  .search-table{
+    width: 100%;
+  }
+  .search-th,.search-td{
+    width:100px;
+    white-space: nowrap;
   }
   .input-radio{
     width: 165px;
@@ -38,6 +50,7 @@
     height: 30px;
     }
   .paginate{
+    width:100%;
     display:flex;
     justify-content:space-between;
   }
@@ -58,11 +71,6 @@
     text-align:center;
     border:1px solid #000;
     border-radius:3px;
-  }
-
-  /* ----------文字制限---------- */
-  .str:hover{
-    opacity: 1;
   }
 </style>
 @section('content')
@@ -119,7 +127,7 @@
 
           </div>
           @if(isset($contacts))
-          <table>
+          <table class="search-table">
             <tr>
               <th class="search-th">ID</th>
               <th class="search-th">お名前</th>
@@ -129,12 +137,12 @@
             </tr>
               @foreach($contacts as $contact)
             <tr>
-              <td>{{$contact->id}}</td>
-              <td>{{$contact->lastname.$contact->firstname}}</td>
-              <td>{{$contact->gender}}</td>
-              <td>{{$contact->email}}</td>
-              <td><p class="str">{{Str::limit($contact->opinion, 25, '...')}}</p></td>
-              <td><form action="/contacts/delete" method="post">@csrf
+              <td class="search-td">{{$contact->id}}</td>
+              <td class="search-td">{{$contact->lastname.$contact->firstname}}</td>
+              <td class="search-td">{{$contact->gender}}</td>
+              <td class="search-td">{{$contact->email}}</td>
+              <td class="search-td"><p class="str" title="{{$contact->opinion}}">{{Str::limit($contact->opinion, 50, '...')}}</p></td>
+              <td class="search-td"><form action="/contacts/delete" method="post">@csrf
                   <input type="hidden" name="id" value={{$contact->id}}>
                   <input type="submit" class="btn-delete" value="削除">
               </form></td>

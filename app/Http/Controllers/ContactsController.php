@@ -33,33 +33,18 @@ class ContactsController extends Controller
 
     public function admin()
     {
-        $items=Contact::all();
-        return view('contacts.admin')->with('items',$items);
+        $contacts=Contact::all();
+        return view('contacts.admin')->with('contacts',$contacts);
     }
 
     public function search(Request $request){
         $params = $request->query();
         $contacts = Contact::serach($params)->paginate(10);
-
-    return view('contacts.admin')->with([
-        'contacts' => $contacts,
-        'params' => $params,
-    ]);
-    }
-    public function hashtag(Request $request){
-        //日付が選択されたら
-        if (!empty($request['from']) && !empty($request['until'])) {
-            //ハッシュタグの選択された20xx/xx/xx ~ 20xx/xx/xxのレポート情報を取得
-            $date = Contact::getDate($request['from'], $request['until']);
-        } else {
-            //リクエストデータがなければそのままで表示
-            $date = Contact::get();
-        }
-        //取得したデータをviewに渡す
-        return view('contact.admin', [
-            "date" => $date
+        return view('contacts.admin')->with([
+            'contacts' => $contacts,
+            'params' => $params,
         ]);
-    }
+        }
     public function delete(Request $request){
         Contact::find($request->id)->delete();
         return redirect('/contacts/admin');

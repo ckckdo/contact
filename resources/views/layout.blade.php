@@ -7,11 +7,20 @@
     <title>contact</title>
     <style>
       /* ----------全体---------- */
+      html {
+        width: 100%;  /* autoによる既定値 */
+      }
+      body{
+        width: 100%;
+        margin:0;
+        box-sizing:border-box:
+      }
       h1{
         font-size:20px;
         text-align:center;
       }
       .container{
+        width: 100%;
         margin:100px,30px;
         font-size:12px;
       }
@@ -187,5 +196,6 @@
     <div class="container">
         @yield('content')
     </div>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </body>
 </html>
